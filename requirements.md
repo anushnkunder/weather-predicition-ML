@@ -7,14 +7,16 @@
 Install with:
 
 ```bash
-pip install pandas scikit-learn matplotlib pymongo
+pip install pandas scikit-learn matplotlib seaborn jupyter ipykernel
 ```
 # Packages used
 Package list:
 - pandas
 - scikit-learn
 - matplotlib
-- pymongo
+- seaborn
+- jupyter
+- ipykernel
 
 ## Standard Library Modules (already included with Python)
 - os

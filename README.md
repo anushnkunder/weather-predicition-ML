@@ -1,10 +1,13 @@
-# FAIML Weather Prediction
+# Predicting Weather with Machine Learning
 
-A machine learning pipeline for temperature prediction using weather sensor data (`light`, `humidity`, and timestamp-derived `hour`) with two baseline models:
-- Linear Regression
-- Random Forest Regressor
+A Data Science mini-project for temperature prediction using weather sensor data (`light`, `humidity`) and time (`hour`).
 
-The project includes data conversion, MongoDB ingestion/fetch, preprocessing, model training/evaluation, and visualization generation.
+This project demonstrates an end-to-end Data Science pipeline, including:
+- Data Loading and Cleaning
+- Exploratory Data Analysis (EDA)
+- Feature Engineering
+- Model Training (Linear Regression vs. Random Forest)
+- Evaluation and Visualization
 
 ## Project Structure
 
@@ -13,86 +16,37 @@ FAIML-Weather_Prediction/
 ├── data/
 │   ├── weather_data_ist.csv
 │   └── weather_data.json
-├── src/
-│   ├── convert.py
-│   ├── mongo_upload.py
-│   ├── mongo_fetch.py
-│   ├── preprocess.py
-│   ├── model.py
-│   ├── visualize.py
-│   ├── run_pipeline.py
-│   └── outputs/
-│       ├── feature_importance.png
-│       ├── actual_vs_predicted.png
-│       └── residual_distribution.png
+├── Weather_Prediction_Mini_Project.ipynb
+├── requirements.md
 └── README.md
 ```
 
 ## Dataset
 
-Current JSON dataset (`data/weather_data.json`):
-- Records: `17464`
-- Fields: `temperature`, `humidity`, `light`, `timestamp`
+The primary dataset is located at `data/weather_data_ist.csv`.
+- Features: `light`, `humidity`, `timestamp`
+- Target: `temperature`
 
 ## Prerequisites
 
 - Python 3.10+
-- MongoDB running locally at `mongodb://localhost:27017/`
 
-Install dependencies:
-
-```bash
-pip install pandas scikit-learn matplotlib pymongo
-```
-
-## Workflow
-
-### 1. (Optional) Convert CSV to JSON
+Install the required dependencies using your virtual environment:
 
 ```bash
-python src/convert.py
+pip install pandas scikit-learn matplotlib seaborn jupyter
 ```
 
-Converts `data/weather_data_ist.csv` to `data/weather_data.json`.
+## How to Run
 
-### 2. Upload JSON data to MongoDB
+Instead of terminal scripts, this project is now fully encapsulated within a Jupyter Notebook. This makes it easy to read the data story, view the plots inline, and understand the model's performance step-by-step.
 
-```bash
-python src/mongo_upload.py
-```
-
-- Database: `weather_ml`
-- Collection: `weather_data`
-
-### 3. Run the end-to-end ML pipeline
-
-Run from the repository root:
-
-```bash
-cd src
-python run_pipeline.py
-```
-
-Pipeline steps:
-1. Fetch records from MongoDB
-2. Preprocess and engineer `hour` from `timestamp`
-3. Chronological train/test split (70/30)
-4. Train and evaluate Linear Regression + Random Forest
-5. Save plots to `src/outputs/`
-
-## Model Inputs and Target
-
-- Features: `light`, `humidity`, `hour`
-- Target: `temperature`
-
-## Output Artifacts
-
-After running the pipeline, generated charts are saved in `src/outputs/`:
-- `feature_importance.png`
-- `actual_vs_predicted.png`
-- `residual_distribution.png`
+1. Start the Jupyter Notebook server:
+   ```bash
+   jupyter notebook
+   ```
+2. Open `Weather_Prediction_Mini_Project.ipynb` in your browser.
+3. Select "Run All Cells" to execute the entire analysis from start to finish.
 
 ## Notes
-
-- `run_pipeline.py` uses local module imports (`from mongo_fetch import ...`), so execute it from inside `src/`.
-- `mongo_upload.py` currently uses an absolute JSON path in `__main__`. Update it if your local project path differs.
+- Previous terminal-based pipeline scripts (and MongoDB integration) have been archived in the git history under the tag `v1.0-faiml-pipeline`.
