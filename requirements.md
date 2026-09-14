@@ -7,16 +7,22 @@
 Install with:
 
 ```bash
-pip install pandas scikit-learn matplotlib seaborn jupyter ipykernel
+pip install pandas numpy scikit-learn matplotlib seaborn jupyter ipykernel xgboost shap streamlit joblib
 ```
-# Packages used
+
 Package list:
 - pandas
+- numpy
 - scikit-learn
 - matplotlib
 - seaborn
 - jupyter
 - ipykernel
+- xgboost
+- shap
+- streamlit
+- joblib
+- plotly
 
 ## Standard Library Modules (already included with Python)
 - os
